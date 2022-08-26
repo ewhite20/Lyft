@@ -1,5 +1,5 @@
 from datetime import datetime
-from engine.engine import EngineInterface, WilloughbyEngine, CapuletEngine, SternmanEngine
+from engine import EngineInterface, WilloughbyEngine, CapuletEngine, SternmanEngine
 from battery import SpindlerBattery, NubbinBattery
 
 class serviceable():
@@ -11,8 +11,12 @@ class Car():
         self.engine= engine
         self.battery= battery
 
-    def needs_service():
-        pass
+    def needs_service(self):
+        if self.battery.needs_service() or self.engine.needs_service():
+            True
+        else:
+            False
+
 class CarFactory(Car):
     def create_calliope(current_date, last_service_date, current_mileage, last_service_mileage): 
         Car(CapuletEngine(current_mileage, last_service_mileage),SpindlerBattery(last_service_date, current_date))
