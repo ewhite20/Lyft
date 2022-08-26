@@ -2,7 +2,8 @@ import unittest
 
 from datetime import datetime
 
-from car.serviceable import CarFactory
+from car.generator.generator import CarFactory
+
 
 class TestSpindlerBattery(unittest.TestCase):
     def test_battery_should_be_serviced(self):
@@ -11,7 +12,7 @@ class TestSpindlerBattery(unittest.TestCase):
         current_mileage = 0
         last_service_mileage = 0
 
-        car = CarFactory.create_calliope(today, last_service_date, current_mileage, last_service_mileage)
+        car =CarFactory.create_calliope(today, last_service_date, current_mileage, last_service_mileage)
         self.assertTrue(car.needs_service())
 
     def test_battery_should_not_be_serviced(self):
