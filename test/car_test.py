@@ -2,7 +2,7 @@ import unittest
 
 from datetime import datetime
 
-from Lyft.car import CarFactory
+from car.carfactory import CarFactory
 
 
 class TestSpindlerBattery(unittest.TestCase):
