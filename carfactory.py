@@ -19,7 +19,7 @@ class CarFactory(Car):
     def create_palindrome(current_date, last_service_date, warning_light_on, wear):
         engine = SternmanEngine(warning_light_on)
         battery = SpindlerBattery(last_service_date, current_date)
-        tires = CarriganTire(wear])
+        tires = CarriganTire(wear)
         return Car(engine,battery,tires)
 
     def create_rorschach(current_date, last_service_date, current_mileage, last_service_mileage,wear ):
