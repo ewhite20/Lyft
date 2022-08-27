@@ -1,11 +1,8 @@
 from operator import truediv
 from datetime import datetime
+from battery import Battery
 
-class BatteryInterface():
-  def needs_service():
-    pass
-
-class SpindlerBattery(BatteryInterface):
+class SpindlerBattery(Battery):
   def __init__(self, last_service_date, current_date):
     self.last_service_date = last_service_date
     self.current_date = current_date
@@ -17,7 +14,7 @@ class SpindlerBattery(BatteryInterface):
      else:
       return False
 
-class NubbinBattery(BatteryInterface):
+class NubbinBattery(Battery):
   def __init__(self, last_service_date, current_date):
     self.last_service_date = last_service_date
     self.current_date = current_date

@@ -1,12 +1,8 @@
 from abc import ABC
-
 from car import Car
-
-class EngineInterface:
-    def needs_service(self) -> str:
-        pass
+from engine import Engine
  
-class CapuletEngine(EngineInterface):
+class CapuletEngine(Engine):
     def __init__(self, current_mileage, last_service_mileage):
         self.current_mileage = current_mileage
         self.last_service_mileage = last_service_mileage
@@ -14,7 +10,7 @@ class CapuletEngine(EngineInterface):
     def needs_service(self):
         self.current_mileage - self.last_service_mileage > 30000
 
-class SternmanEngine(EngineInterface):
+class SternmanEngine(Engine):
     def __init__(self, warning_light_is_on):
            self.warning_light_is_on = warning_light_is_on
 
@@ -24,7 +20,7 @@ class SternmanEngine(EngineInterface):
         else:
             return False
 
-class WilloughbyEngine(EngineInterface):
+class WilloughbyEngine(Engine):
     def __init__(self, current_mileage, last_service_mileage):
         self.current_mileage = current_mileage
         self.last_service_mileage = last_service_mileage

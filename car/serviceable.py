@@ -1,12 +1,10 @@
 from datetime import datetime
-from engine import EngineInterface, WilloughbyEngine, CapuletEngine, SternmanEngine
+from engine import WilloughbyEngine, CapuletEngine, SternmanEngine
 from battery import SpindlerBattery, NubbinBattery
+from serviceable import Serviceable
 
-class serviceable():
-    def needs_service():
-        pass
 
-class Car():
+class Car(Serviceable):
     def __init__(engine,battery,self):
         self.engine= engine
         self.battery= battery
