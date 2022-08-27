@@ -1,8 +1,9 @@
 import unittest
 from datetime import datetime
-from engine.engines import CapuletEngine,WilloughbyEngine, SternmanEngine
+from engine.engines import CapuletEngine, WilloughbyEngine, SternmanEngine
 from battery.batteries import SpindlerBattery, NubbinBattery
 from tire.tires import CarriganTire, OctoprimeTire
+
 
 class TestCapuletEngine(unittest.TestCase):
     def test_needs_service_true(self):
@@ -17,6 +18,7 @@ class TestCapuletEngine(unittest.TestCase):
         engine = CapuletEngine(current_mileage, last_service_mileage)
         self.assertFalse(engine.needs_service())
 
+
 class TestSternmanEngine(unittest.TestCase):
     def test_needs_service_true(self):
         warning_light_is_on = True
@@ -27,6 +29,7 @@ class TestSternmanEngine(unittest.TestCase):
         warning_light_is_on = False
         engine = SternmanEngine(warning_light_is_on)
         self.assertFalse(engine.needs_service())
+
 
 class TestWilloughbyEngine(unittest.TestCase):
     def test_needs_service_true(self):
@@ -41,25 +44,27 @@ class TestWilloughbyEngine(unittest.TestCase):
         engine = WilloughbyEngine(current_mileage, last_service_mileage)
         self.assertFalse(engine.needs_service())
 
+
 class TestSpindlerBattery(unittest.TestCase):
     def test_needs_service_true(self):
         today = datetime.today().date()
-        last_service_date = today.replace(year=today.year - 3)
-        battery = SpindlerBattery(last_service_date,today)
+        last_service_date = today.replace(year=today.year - 4)
+        battery = SpindlerBattery(last_service_date, today)
         self.assertTrue(battery.needs_service())
 
     def test_needs_service_false(self):
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 1)
-        battery = SpindlerBattery(last_service_date,today, )
+        battery = SpindlerBattery(last_service_date, today)
         self.assertFalse(battery.needs_service())
+
 
 class TestNubbinBattery(unittest.TestCase):
 
     def test_needs_service_true(self):
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 5)
-        battery = NubbinBattery(last_service_date,today, )
+        battery = NubbinBattery(last_service_date, today, )
         self.assertTrue(battery.needs_service())
 
     def test_needs_service_false(self):
@@ -68,27 +73,30 @@ class TestNubbinBattery(unittest.TestCase):
         battery = NubbinBattery(last_service_date, today, )
         self.assertFalse(battery.needs_service())
 
+
 class TestCarriganTire(unittest.TestCase):
     def test_needs_service(self):
-        wear = ([0,0,4,0])
+        wear = ([0, 0, 4, 0])
         tire = CarriganTire(wear)
         self.assertTrue(tire.needs_service())
 
     def test_needs_service_false(self):
-        wear = ([0,0,0,0.3])
+        wear = ([0, 0, 0, 0.3])
         tire = CarriganTire(wear)
         self.assertFalse(tire.needs_service())
+
 
 class TestOctoprimeTire(unittest.TestCase):
     def test_needs_service(self):
-        wear = ([0,0,4,0])
+        wear = ([0, 0, 4, 0])
         tire = OctoprimeTire(wear)
         self.assertTrue(tire.needs_service())
 
     def test_needs_service_false(self):
-        wear = ([0,0.2,1,1])
+        wear = ([0, 0.2, 1, 1])
         tire = OctoprimeTire(wear)
         self.assertFalse(tire.needs_service())
+
 
 if __name__ == '__main__':
     unittest.main()
