@@ -1,6 +1,5 @@
 import unittest
 from datetime import datetime
-from carfactory import CarFactory
 from engine.engines import CapuletEngine,WilloughbyEngine, SternmanEngine
 from battery.batteries import SpindlerBattery, NubbinBattery
 from tire.tires import CarriganTire, OctoprimeTire

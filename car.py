@@ -7,4 +7,4 @@ class Car(Serviceable):
         self.tires = tires
 
     def needs_service(self):
-        return (self.battery.needs_service()==True) or (self.engine.needs_service()==True) or (self.tires.needs_service()==True):
+        return (self.battery.needs_service()==True) or (self.engine.needs_service()==True) or (self.tires.needs_service()==True)

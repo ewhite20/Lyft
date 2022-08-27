@@ -4,28 +4,32 @@ from tire.tires import OctoprimeTire, CarriganTire
 from car import Car
 
 class CarFactory(Car):
-    def create_calliope(current_date, last_service_date, current_mileage, last_service_mileage): 
+    def create_calliope(current_date, last_service_date, current_mileage, last_service_mileage, wear): 
         engine = CapuletEngine(current_mileage, last_service_mileage)
         battery = SpindlerBattery(last_service_date, current_date)
-        tires = OctoprimeTire([0,0,0,0])
+        tires = OctoprimeTire(wear)
         return Car(engine,battery,tires)
-    def create_glissade(current_date, last_service_date, current_mileage, last_service_mileage): 
+
+    def create_glissade(current_date, last_service_date, current_mileage, last_service_mileage, wear): 
         engine = WilloughbyEngine(current_mileage, last_service_mileage)
         battery = SpindlerBattery(last_service_date, current_date)
-        tires = CarriganTire([0,0,0.5,0])
+        tires = CarriganTire(wear)
         return Car(engine,battery,tires)
-    def create_palindrome(current_date, last_service_date, warning_light_on):
+
+    def create_palindrome(current_date, last_service_date, warning_light_on, wear):
         engine = SternmanEngine(warning_light_on)
         battery = SpindlerBattery(last_service_date, current_date)
-        tires = CarriganTire([0,0,0.5,0])
+        tires = CarriganTire(wear])
         return Car(engine,battery,tires)
-    def create_rorschach(current_date, last_service_date, current_mileage, last_service_mileage):
+
+    def create_rorschach(current_date, last_service_date, current_mileage, last_service_mileage,wear ):
         engine = WilloughbyEngine(current_mileage, last_service_mileage)
         battery = NubbinBattery(last_service_date, current_date)
-        tires = CarriganTire([0,0,0.5,0])
+        tires = CarriganTire(wear)
         return Car(engine,battery,tires)
-    def create_thovex(current_date, last_service_date, current_mileage, last_service_mileage):
+
+    def create_thovex(current_date, last_service_date, current_mileage, last_service_mileage, wear):
         engine  = CapuletEngine(current_mileage, last_service_mileage)
         battery = NubbinBattery(last_service_date, current_date)
-        tires = OctoprimeTire([0,0,0.5,0])
+        tires = OctoprimeTire(wear)
         return Car(engine,battery,tires)
